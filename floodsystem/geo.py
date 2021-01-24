@@ -5,12 +5,12 @@
 geographical data.
 
 """
-
+import dateutil
 from .utils import sorted_by_key  # noqa
 import math
 def stations_by_distance(stations, p):
     tuple_list = []
-    for station in range(len(stations):
+    for station in range(len(stations)):
         def distance(station):
             R = 6373.0
             lat1 = station.coord[0]
@@ -25,4 +25,6 @@ def stations_by_distance(stations, p):
             return distance
         tuple_list += (station.name, distance(station))
         return tuple_list.utils.sorted_by_key[1]
+from stationdata import build_station_list
+print(stations_by_distance(build_station_list, (50.2, -5.2)))
 
