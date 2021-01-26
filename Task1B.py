@@ -8,6 +8,7 @@ from floodsystem.utils import sorted_by_key
 from floodsystem.stationdata import build_station_list
 stations = build_station_list()
 
+
 def run():
     list_stations = stations_by_distance(stations, (52.2053, 0.1218))
     # slice list to get 10 closest and farthest stations
@@ -23,4 +24,6 @@ def run():
                 list_town.append((list_close_far[i][0], stations[j].town, list_close_far[i][1]))
     # return list sorted by distance
     return sorted_by_key(list_town, 2)
+
+    
 print(run())
