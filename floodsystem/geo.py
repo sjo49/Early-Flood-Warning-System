@@ -8,13 +8,11 @@ geographical data.
 import dateutil
 from .utils import sorted_by_key  # noqa
 import math
-def stations_by_distance(stations, p):
-    tuple_list = []
-    for station in range(len(stations)):
-        def distance(station):
+
+def distance(object, p):
             R = 6373.0
-            lat1 = station.coord[0]
-            lon1 = station.coord[1]
+            lat1 = object[0]
+            lon1 = object[1]
             lat2 = p[0]
             lon2 = p[1]
             dlat = lat2 - lat1
@@ -23,8 +21,14 @@ def stations_by_distance(stations, p):
             c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
             distance = R * c
             return distance
-        tuple_list += (station.name, distance(station))
-        return tuple_list.utils.sorted_by_key[1]
-from stationdata import build_station_list
-print(stations_by_distance(build_station_list, (50.2, -5.2)))
+
+
+def stations_by_distance(stationobjects, p):
+    tuple_list = []
+    for i in range(len(stationobjects)):
+        tuple_list.append((stationobjects[i].name, distance(stationobjects[i].coord, p)))
+    
+    return sorted_by_key(tuple_list, 1)
+
+
 
