@@ -1,6 +1,4 @@
 from floodsystem.geo import rivers_with_station
-from floodsystem import datafetcher
-from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import build_station_list
 
 stations = build_station_list()
