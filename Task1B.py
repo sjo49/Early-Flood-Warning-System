@@ -29,4 +29,5 @@ def run():
 # return list sorted by distance
     return sorted_by_key(list_town_close, 2), sorted_by_key(list_town_far, 2)
 
+
 print(run())

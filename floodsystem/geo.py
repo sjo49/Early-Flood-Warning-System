@@ -11,8 +11,10 @@ import math
 from .stationdata import build_station_list
 from haversine import haversine, Unit
 
+
 def distance(object, p):
     return haversine(object, p)
+
 
 def stations_by_distance(stations, p):
     tuple_list = []
