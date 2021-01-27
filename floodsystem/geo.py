@@ -28,7 +28,7 @@ def distance(object, p):
 def stations_by_distance(stations, p):
     tuple_list = []
     for station in stations:
-        tuple_list.append((station, distance(station.coord, p)))
+        tuple_list.append((station.name, distance(station.coord, p)))
     return sorted_by_key(tuple_list, 1)
 
 
@@ -61,7 +61,6 @@ def stations_by_river(stations):
     return river_dict
 
 
-from .utils import sorted_by_key
 def rivers_by_station_number(stations, N):
     stations_on_rivers_dict = stations_by_river(stations)
     rivers = rivers_with_station(stations)
