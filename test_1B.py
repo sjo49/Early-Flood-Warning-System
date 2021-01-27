@@ -1,5 +1,4 @@
 from Task1B import run
-from floodsystem.stationdata import build_station_list
 
 
 def test_run():
@@ -7,4 +6,3 @@ def test_run():
 
 
 test_run()
-    
