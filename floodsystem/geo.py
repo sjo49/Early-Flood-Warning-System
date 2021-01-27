@@ -8,7 +8,6 @@ geographical data.
 import dateutil
 from .utils import sorted_by_key  # noqa
 import math
-from .stationdata import build_station_list
 from haversine import haversine, Unit
 
 
