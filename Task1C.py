@@ -4,7 +4,7 @@ stations = build_station_list
 
 
 def run():
-    station_list = stations_within_radius(stations, (52.2053, 0.1218), 10000)
+    station_list = stations_within_radius(stations, (52.2053, 0.1218), 10)
     return sorted(station_list)
 
 
