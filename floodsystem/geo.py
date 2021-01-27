@@ -9,21 +9,10 @@ import dateutil
 from .utils import sorted_by_key  # noqa
 import math
 from .stationdata import build_station_list
-
+from haversine import haversine, Unit
 
 def distance(object, p):
-            R = 6373.0
-            lat1 = object[0]
-            lon1 = object[1]
-            lat2 = p[0]
-            lon2 = p[1]
-            dlat = lat2 - lat1
-            dlon = lon2 - lon1
-            a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
-            c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-            distance = R * c
-            return distance
-
+    return haversine(object, p)
 
 def stations_by_distance(stations, p):
     tuple_list = []
@@ -34,9 +23,10 @@ def stations_by_distance(stations, p):
 
 def stations_within_radius(stations, centre, r):
     near_stations = []
-    for station in stations:
+    list_stations = stations()
+    for station in list_stations:
         if distance(station.coord, centre) <= r:
-            near_stations.extend(station.name)
+            near_stations.append(station.name)
     return near_stations
 
 
@@ -88,11 +78,3 @@ def rivers_by_station_number(stations, N):
                 break
 
     return top_N_rivers
-
-
-
-
-
-
-
-
