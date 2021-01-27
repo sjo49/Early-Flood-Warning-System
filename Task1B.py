@@ -29,6 +29,4 @@ def run():
 # return list sorted by distance
     return sorted_by_key(list_town_close, 2), sorted_by_key(list_town_far, 2)
 
-
-print(stations_by_distance(stations, (52.2053, 0.1218)))
 print(run())
