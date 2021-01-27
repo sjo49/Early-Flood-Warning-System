@@ -18,16 +18,15 @@ def run():
     list_town_far = []
 # find town corresponding with station
     for i in range(len(list_close)):
-        for j in range(len(stations)):
-            if list_close[i][0] in stations[j].name:
-                list_town_close.append((list_close[i][0], stations[j].town, list_close[i][1]))
-# return list sorted by distance
+        for station in stations:
+            if station.name in list_close[i]:
+                list_town_close.append((list_close[i][0], station.town, list_close[i][1]))
 # repeat above steps for furthest station
     for x in range(len(list_far)):
-        for j in range(len(stations)):
-            if list_far[x][0] in stations[j].name:
-                list_town_far.append((list_far[x][0], stations[j].town, list_far[x][1]))
-    # return list sorted by distance
+        for station in stations:
+            if station.name in list_far[x]:
+                list_town_far.append((list_far[x][0], station.town, list_far[x][1]))
+# return list sorted by distance
     return sorted_by_key(list_town_close, 2), sorted_by_key(list_town_far, 2)
 
 
