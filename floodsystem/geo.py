@@ -8,6 +8,8 @@ geographical data.
 import dateutil
 from .utils import sorted_by_key  # noqa
 import math
+from .stationdata import build_station_list
+
 
 def distance(object, p):
             R = 6373.0
@@ -23,19 +25,21 @@ def distance(object, p):
             return distance
 
 
-def stations_by_distance(stationobjects, p):
+def stations_by_distance(stations, p):
     tuple_list = []
-    for i in range(len(stationobjects)):
-        tuple_list.append((stationobjects[i].name, distance(stationobjects[i].coord, p)))
-    
+    for station in stations:
+        tuple_list.append((station, distance(station.coord, p)))
     return sorted_by_key(tuple_list, 1)
 
 
+def stations_within_radius(stations, centre, r):
+    near_stations = []
+    for station in stations:
+        if distance(station.coord, centre) <= r:
+            near_stations.extend(station.name)
+    return near_stations
 
-from . import datafetcher
-from .station import MonitoringStation
-from .stationdata import build_station_list
-stations = build_station_list()
+
 def rivers_with_station(stations):
     rivers_list = []
     for station in stations:
@@ -43,6 +47,7 @@ def rivers_with_station(stations):
     a = set(rivers_list) #coverting to set removes duplicates
     sorted_rivers = sorted(a) #coverts set into alphabetical list of rivers
     return sorted_rivers
+
 
 def stations_by_river(stations):
     rivers = rivers_with_station(stations)
