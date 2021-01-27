@@ -55,7 +55,45 @@ def stations_by_river(stations):
     for i in range(len(rivers)):
         stations_on_river = []
         for j in range(len(stations)):
-            if rivers[i] in stations[j].river:
+            if rivers[i] == stations[j].river:
                 stations_on_river.append(stations[j].name)
             river_dict[rivers[i]] = sorted(stations_on_river)
     return river_dict
+
+
+from .utils import sorted_by_key
+def rivers_by_station_number(stations, N):
+    stations_on_rivers_dict = stations_by_river(stations)
+    rivers = rivers_with_station(stations)
+    num_stations_on_river = []
+    top_N_rivers = []
+    for i in range(len(rivers)):
+        x = 0
+        x = len(stations_on_rivers_dict[rivers[i]])
+        num_stations_on_river.append(x)
+    tuple_list = list(zip(rivers, num_stations_on_river))
+    ordered_low_to_high = sorted_by_key(tuple_list, 1)
+    #Reversing a list using reversed() 
+    def Reverse(lst): 
+        return [ele for ele in reversed(lst)]  
+    ordered_num = Reverse(ordered_low_to_high)
+    #set up list of top N rivers by number of stations
+    for i in range(N):
+        top_N_rivers.append(ordered_num[i])
+    #account for including the next in line if it has same number of stations (until number is less)
+    if ordered_num[i+1][1] == ordered_num[i][1]:
+        while ordered_num[i+1][1] == ordered_num[i][1]:
+            top_N_rivers.append(ordered_num[i+1]) 
+            i += 1
+            if i > 100:
+                break
+
+    return top_N_rivers
+
+
+
+
+
+
+
+
