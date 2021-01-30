@@ -7,8 +7,7 @@ geographical data.
 """
 import dateutil
 from .utils import sorted_by_key  # noqa
-import math
-from haversine import haversine, Unit
+from haversine import haversine
 
 
 def distance(object, p):
@@ -34,9 +33,12 @@ def stations_within_radius(stations, centre, r):
 def rivers_with_station(stations):
     rivers_list = []
     for station in stations:
-        rivers_list.append(station.river) #builds list with all rivers
-    a = set(rivers_list) #coverting to set removes duplicates
-    sorted_rivers = sorted(a) #coverts set into alphabetical list of rivers
+        # builds list with all rivers
+        rivers_list.append(station.river)
+    # coverting to set removes duplicates
+    a = set(rivers_list)
+    # coverts set into alphabetical list of rivers
+    sorted_rivers = sorted(a)
     return sorted_rivers
 
 
@@ -63,17 +65,18 @@ def rivers_by_station_number(stations, N):
         num_stations_on_river.append(x)
     tuple_list = list(zip(rivers, num_stations_on_river))
     ordered_low_to_high = sorted_by_key(tuple_list, 1)
-    #Reversing a list using reversed() 
-    def Reverse(lst): 
-        return [ele for ele in reversed(lst)]  
+    # Reversing a list using reversed()
+
+    def Reverse(lst):
+        return [ele for ele in reversed(lst)]
     ordered_num = Reverse(ordered_low_to_high)
-    #set up list of top N rivers by number of stations
+    # set up list of top N rivers by number of stations
     for i in range(N):
         top_N_rivers.append(ordered_num[i])
-    #account for including the next in line if it has same number of stations (until number is less)
-    if ordered_num[i+1][1] == ordered_num[i][1]:
-        while ordered_num[i+1][1] == ordered_num[i][1]:
-            top_N_rivers.append(ordered_num[i+1]) 
+    # account for including the next in line if it has same number of stations (until number is less)
+    if ordered_num[i + 1][1] == ordered_num[i][1]:
+        while ordered_num[i + 1][1] == ordered_num[i][1]:
+            top_N_rivers.append(ordered_num[i + 1])
             i += 1
             if i > 100:
                 break
