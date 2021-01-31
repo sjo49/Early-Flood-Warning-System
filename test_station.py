@@ -9,6 +9,7 @@ from floodsystem.station import inconsistant_typical_range_stations
 
 stations = build_station_list()
 
+
 def test_create_monitoring_station():
 
     # Create a station
@@ -31,12 +32,13 @@ def test_create_monitoring_station():
 
 
 def test_typical_range_consistant():
-    #stations[0] is has consistant typical range data
-    assert stations[0].typical_range_consistant() == True
+    # stations[0] is has consistant typical range data
+    assert stations[0].typical_range_consistant() is True
 
-    #stations[735] has inconsistant typical range data
-    assert stations[735].typical_range_consistant() == False
+    # stations[735] has inconsistant typical range data
+    assert stations[735].typical_range_consistant() is False
+
 
 def test_inconsistant_typical_range_stations(stations):
-   assert len(inconsistant_typical_range_stations(stations)) != 0
-   assert stations[735].name in inconsistant_typical_range_stations(stations)
+    assert len(inconsistant_typical_range_stations(stations)) != 0
+    assert stations[735].name in inconsistant_typical_range_stations(stations)

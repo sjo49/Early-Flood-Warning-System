@@ -6,15 +6,15 @@ from floodsystem.geo import stations_by_river
 def run():
     """Requirements for Task 1D"""
 
-    #build station list
+    # build station list
     stations = build_station_list()
 
-    #build list of rivers with monitering staitons
+    # build list of rivers with monitering staitons
     rivers = rivers_with_station(stations)
     print(rivers)
     print(len(rivers))
-    
-    #dictionary of rivers to a list of the stations on that river
+
+    # dictionary of rivers to a list of the stations on that river
     stations_on_each_river = stations_by_river(stations)
     print(stations_on_each_river['Addlestone Bourne'])
 

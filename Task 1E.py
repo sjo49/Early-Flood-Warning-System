@@ -1,4 +1,3 @@
-from floodsystem.geo import rivers_with_station
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import rivers_by_station_number
 
@@ -6,10 +5,10 @@ from floodsystem.geo import rivers_by_station_number
 def run():
     """Requirements for Task 1E"""
 
-    #build station list
+    # build station list
     stations = build_station_list()
-    
-    #function that resturns top N rivers with the most stations
+
+    # function that resturns top N rivers with the most stations
     print(rivers_by_station_number(stations, 12))
 
 

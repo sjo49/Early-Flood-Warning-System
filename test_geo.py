@@ -8,6 +8,7 @@ from floodsystem.stationdata import build_station_list
 
 stations = build_station_list()
 
+
 def test_distance():
     assert round(distance((52.2, 0.122), (50.2, -1.74))) == 257
 
@@ -30,23 +31,24 @@ def test_stations_within_radius():
 
 test_stations_within_radius()
 
+
 def test_rivers_with_station():
     rivers = rivers_with_station(stations)
-    #first item in alphabetical list of rivers with monitering stations is Addlestone Bourne
+    # first item in alphabetical list of rivers with monitering stations is Addlestone Bourne
     assert rivers[0] == "Addlestone Bourne"
-    
-    #should have 916 rivers in list
+
+    # should have 916 rivers in list
     assert len(rivers) == 916
 
 
 def test_stations_by_river():
-    #addlestone bourne has two stations: ['Addlestone', 'Grants Bridge']
+    # addlestone bourne has two stations: ['Addlestone', 'Grants Bridge']
     assert stations_by_river(stations)["Addlestone Bourne"] == ['Addlestone', 'Grants Bridge']
 
 
 def test_rivers_by_station_number():
-    #top 3 rivers
+    # top 3 rivers
     assert rivers_by_station_number(stations, 3) == [('River Thames', 55), ('River Avon', 32), ('River Great Ouse', 30)]
     
-    #should include 11th term when N = 10 because 10th and 11th river both have 17 stations
+    # should include 11th term when N = 10 because 10th and 11th river both have 17 stations
     assert len(rivers_by_station_number(stations, 10)) == 11
