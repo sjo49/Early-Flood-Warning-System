@@ -30,4 +30,5 @@ def run():
     return sorted_by_key(list_town_close, 2), sorted_by_key(list_town_far, 2)
 
 
-print(run())
+if __name__ == '__main__':
+    print(run())

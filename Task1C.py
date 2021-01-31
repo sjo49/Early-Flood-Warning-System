@@ -8,4 +8,5 @@ def run():
     return sorted(station_list)
 
 
-print(run())
+if __name__ == '__main__':
+    print(run())
