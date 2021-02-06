@@ -39,6 +39,6 @@ def test_typical_range_consistant():
     assert stations[735].typical_range_consistant() is False
 
 
-def test_inconsistant_typical_range_stations(stations):
+def test_inconsistant_typical_range_stations():
     assert len(inconsistant_typical_range_stations(stations)) != 0
     assert stations[735].name in inconsistant_typical_range_stations(stations)
