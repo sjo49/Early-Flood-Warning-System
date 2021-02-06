@@ -38,6 +38,10 @@ def test_typical_range_consistant():
     # stations[735] has inconsistant typical range data
     assert stations[735].typical_range_consistant() is False
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9d436b244c8da5e5e331cf6d5aa3363b2c8c8f96
 def test_inconsistant_typical_range_stations():
     assert len(inconsistant_typical_range_stations(stations)) != 0
     assert stations[735].name in inconsistant_typical_range_stations(stations)
