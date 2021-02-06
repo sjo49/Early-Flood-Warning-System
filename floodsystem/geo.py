@@ -7,9 +7,14 @@ geographical data.
 """
 import dateutil
 from .utils import sorted_by_key  # noqa
-import math
-from .stationdata import build_station_list
-from haversine import haversine, Unit
+import subprocess
+
+
+def install(name):
+    subprocess.call(['pip', 'install', name])
+
+
+install('haversine')
 from haversine import haversine
 
 
@@ -68,8 +73,12 @@ def rivers_by_station_number(stations, N):
         num_stations_on_river.append(x)
     tuple_list = list(zip(rivers, num_stations_on_river))
     ordered_low_to_high = sorted_by_key(tuple_list, 1)
-    ordered_num = ordered_low_to_high[::-1] #reverses list
-    #set up list of top N rivers by number of stations
+    # Reversing a list using reversed()
+
+    def Reverse(lst):
+        return [ele for ele in reversed(lst)]
+    ordered_num = Reverse(ordered_low_to_high)
+    # set up list of top N rivers by number of stations
     for i in range(N):
         top_N_rivers.append(ordered_num[i])
     # account for including the next in line if it has same number of stations (until number is less)
