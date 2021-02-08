@@ -36,7 +36,7 @@ test_stations_within_radius()
 
 def test_rivers_with_station():
     rivers = rivers_with_station(stations)
-    #alphabetical list of rivers
+    # alphabetical list of rivers
     assert rivers == sorted(rivers)
 
     # should have 916 rivers in list

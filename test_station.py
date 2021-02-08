@@ -47,5 +47,5 @@ def test_typical_range_consistant():
 
 def test_inconsistant_typical_range_stations():
     assert len(inconsistant_typical_range_stations(stations)) != 0
-    index_of_inconsistant_station = [x for x, y in enumerate(stations) if y.name == inconsistant_typical_range_stations(stations)[0]][0]
-    assert stations[index_of_inconsistant_station].typical_range_consistant() is False
+    i_inconsistant = [x for x, y in enumerate(stations) if y.name == inconsistant_typical_range_stations(stations)[0]][0]
+    assert stations[i_inconsistant].typical_range_consistant() is False
