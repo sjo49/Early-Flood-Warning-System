@@ -9,7 +9,7 @@ def run():
     stations = build_station_list()
 
     # function that resturns top N rivers with the most stations
-    print(rivers_by_station_number(stations, 12))
+    print(rivers_by_station_number(stations, 9))
 
 
 if __name__ == "__main__":

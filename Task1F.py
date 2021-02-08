@@ -8,13 +8,6 @@ def run():
     # build station list
     stations = build_station_list()
 
-    # Method within MoniteringStation to check for consistancy
-    # for station that is consistant
-    print(stations[0].typical_range_consistant())
-
-    # for station that is inconsistant
-    print(stations[735].typical_range_consistant())
-
     # Lisy of stations with inconsistant typical range
     print(inconsistant_typical_range_stations(stations))
 

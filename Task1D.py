@@ -11,12 +11,13 @@ def run():
 
     # build list of rivers with monitering staitons
     rivers = rivers_with_station(stations)
-    print(rivers)
-    print(len(rivers))
+    print(f"{len(rivers)} stations. First 10 - {rivers[:10]}")
 
     # dictionary of rivers to a list of the stations on that river
     stations_on_each_river = stations_by_river(stations)
-    print(stations_on_each_river['Addlestone Bourne'])
+    print(stations_on_each_river['River Aire'])
+    print(stations_on_each_river['River Cam'])
+    print(stations_on_each_river['River Thames'])
 
 
 if __name__ == "__main__":
