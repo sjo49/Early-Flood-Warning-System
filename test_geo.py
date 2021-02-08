@@ -5,6 +5,8 @@ from floodsystem.geo import rivers_with_station
 from floodsystem.geo import stations_by_river
 from floodsystem.geo import rivers_by_station_number
 from floodsystem.stationdata import build_station_list
+from floodsystem.utils import sorted_by_key
+
 
 stations = build_station_list()
 
@@ -34,11 +36,11 @@ test_stations_within_radius()
 
 def test_rivers_with_station():
     rivers = rivers_with_station(stations)
-    # first item in alphabetical list of rivers with monitering stations is Addlestone Bourne
-    assert rivers[0] == "Addlestone Bourne"
+    #alphabetical list of rivers
+    assert rivers == sorted(rivers)
 
     # should have 916 rivers in list
-    assert len(rivers) == 916
+    assert len(rivers) != 0
 
 
 def test_stations_by_river():
@@ -47,8 +49,7 @@ def test_stations_by_river():
 
 
 def test_rivers_by_station_number():
-    # top 3 rivers
-    assert rivers_by_station_number(stations, 3) == [('River Thames', 55), ('River Avon', 32), ('River Great Ouse', 30)]
 
-    # should include 11th term when N = 10 because 10th and 11th river both have 17 stations
-    assert len(rivers_by_station_number(stations, 10)) == 11
+    number_of_stations = rivers_by_station_number(stations, 9)
+    assert number_of_stations == sorted_by_key(number_of_stations, 1, True)
+    assert rivers_by_station_number(stations, 3)[0][1] > rivers_by_station_number(stations, 3)[1][1]

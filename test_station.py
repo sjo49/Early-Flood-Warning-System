@@ -32,13 +32,20 @@ def test_create_monitoring_station():
 
 
 def test_typical_range_consistant():
-    # stations[0] is has consistant typical range data
-    assert stations[0].typical_range_consistant() is True
+    # # stations[0] at time of writing code had consistant data
+    if stations[0].typical_range is None or stations[0].typical_range[0] > stations[0].typical_range[1]:
+        assert stations[0].typical_range_consistant() is False
+    else:
+        assert stations[0].typical_range_consistant() is True
 
-    # stations[735] has inconsistant typical range data
-    assert stations[735].typical_range_consistant() is False
+    # stations[735] at time of writing code had inconsistant data
+    if stations[735].typical_range is None or stations[735].typical_range[0] > stations[735].typical_range[1]:
+        assert stations[735].typical_range_consistant() is False
+    else:
+        assert stations[735].typical_range_consistant() is True
 
 
 def test_inconsistant_typical_range_stations():
     assert len(inconsistant_typical_range_stations(stations)) != 0
-    assert stations[735].name in inconsistant_typical_range_stations(stations)
+    index_of_inconsistant_station = [x for x, y in enumerate(stations) if y.name == inconsistant_typical_range_stations(stations)[0]][0]
+    assert stations[index_of_inconsistant_station].typical_range_consistant() is False
