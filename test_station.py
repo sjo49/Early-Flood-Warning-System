@@ -5,7 +5,7 @@
 
 from floodsystem.station import MonitoringStation
 from floodsystem.stationdata import build_station_list
-from floodsystem.station import inconsistant_typical_range_stations
+from floodsystem.station import inconsistent_typical_range_stations
 
 stations = build_station_list()
 
@@ -31,21 +31,21 @@ def test_create_monitoring_station():
     assert s.town == town
 
 
-def test_typical_range_consistant():
-    # # stations[0] at time of writing code had consistant data
+def test_typical_range_consistent():
+    # # stations[0] at time of writing code had consistent data
     if stations[0].typical_range is None or stations[0].typical_range[0] > stations[0].typical_range[1]:
-        assert stations[0].typical_range_consistant() is False
+        assert stations[0].typical_range_consistent() is False
     else:
-        assert stations[0].typical_range_consistant() is True
+        assert stations[0].typical_range_consistent() is True
 
-    # stations[735] at time of writing code had inconsistant data
+    # stations[735] at time of writing code had inconsistent data
     if stations[735].typical_range is None or stations[735].typical_range[0] > stations[735].typical_range[1]:
-        assert stations[735].typical_range_consistant() is False
+        assert stations[735].typical_range_consistent() is False
     else:
-        assert stations[735].typical_range_consistant() is True
+        assert stations[735].typical_range_consistent() is True
 
 
-def test_inconsistant_typical_range_stations():
-    assert len(inconsistant_typical_range_stations(stations)) != 0
-    i_incon = [x for x, y in enumerate(stations) if y.name == inconsistant_typical_range_stations(stations)[0]][0]
-    assert stations[i_incon].typical_range_consistant() is False
+def test_inconsistent_typical_range_stations():
+    assert len(inconsistent_typical_range_stations(stations)) != 0
+    i_incon = [x for x, y in enumerate(stations) if y.name == inconsistent_typical_range_stations(stations)[0]][0]
+    assert stations[i_incon].typical_range_consistent() is False
