@@ -73,8 +73,7 @@ def rivers_by_station_number(stations, N):
         num_stations_on_river.append(x)
     tuple_list = list(zip(rivers, num_stations_on_river))
     ordered_low_to_high = sorted_by_key(tuple_list, 1)
-    # Reversing a list using reversed()
-
+    # Reversing a list using Reverse()
     def Reverse(lst):
         return [ele for ele in reversed(lst)]
     ordered_num = Reverse(ordered_low_to_high)
@@ -86,7 +85,7 @@ def rivers_by_station_number(stations, N):
         while ordered_num[i + 1][1] == ordered_num[i][1]:
             top_N_rivers.append(ordered_num[i + 1])
             i += 1
-            if i > 100:
+            if i+1 > len(ordered_num):
                 break
 
     return top_N_rivers
