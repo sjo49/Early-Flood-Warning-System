@@ -28,7 +28,6 @@ class MonitoringStation:
         self.town = town
 
         self.latest_level = None
-        
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -50,10 +49,9 @@ class MonitoringStation:
         return consistent
 
     def relative_water_level(self):
-        
         if self.typical_range is None:
             return None
-        elif self.typical_range_consistent() == False:
+        elif self.typical_range_consistent() is False:
             return None
         elif self.latest_level is None:
             return None
