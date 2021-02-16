@@ -4,10 +4,12 @@ stations = build_station_list()
 from floodsystem.stationdata import update_water_levels
 update_water_levels(stations)
 
-print(stations[23].relative_water_level())
+print(stations[735].relative_water_level())
 
 def run():
-    stations_level_over_threshold(stations, 0.8)
+    over_stations = stations_level_over_threshold(stations, 0.8)
+    for i in over_stations:
+        print(i[0], i[1])
 
 
-print(run())
+run()
