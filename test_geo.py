@@ -27,7 +27,7 @@ test_stations_by_distance()
 
 def test_stations_within_radius():
     near_radius = stations_within_radius(build_station_list, (51, 0.13), 10)
-    assert near_radius[0] == 'Bin Brook'
+    assert near_radius[0] == 'Goldbridge'
 
 
 test_stations_within_radius()
