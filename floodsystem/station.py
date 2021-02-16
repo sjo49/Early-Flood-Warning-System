@@ -50,15 +50,10 @@ class MonitoringStation:
         return consistent
 
     def relative_water_level(self):
-        from .stationdata import build_station_list
-        stations = build_station_list()
-        from .stationdata import update_water_levels
-        update_water_levels(stations)
-        for station in stations:
-            return station.latest_level
+        
         if self.typical_range is None:
             return None
-        elif self.typical_range_consistant == False:
+        elif self.typical_range_consistent() == False:
             return None
         elif self.latest_level is None:
             return None
