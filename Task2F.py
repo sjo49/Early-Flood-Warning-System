@@ -25,4 +25,4 @@ def run():
             plot_water_level_with_fit(stations[ind], dates, levels, p)
 
 
-run() 
+run()
