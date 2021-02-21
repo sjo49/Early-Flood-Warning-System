@@ -3,11 +3,11 @@ from floodsystem.flood import stations_highest_rel_level
 from floodsystem.stationdata import build_station_list
 from floodsystem.plot import plot_water_levels
 from floodsystem.stationdata import update_water_levels
-from floodsystem.station import MonitoringStation
 import datetime
 
 stations = build_station_list()
 update_water_levels(stations)
+
 
 def run():
     current_high_stations = stations_highest_rel_level(stations, 5)
@@ -21,4 +21,3 @@ def run():
 
 
 run()
-

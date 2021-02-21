@@ -52,4 +52,3 @@ def test_rivers_by_station_number():
     number_of_stations = rivers_by_station_number(stations, 9)
     assert number_of_stations == sorted_by_key(number_of_stations, 1, True)
     assert rivers_by_station_number(stations, 3)[0][1] > rivers_by_station_number(stations, 3)[1][1]
-

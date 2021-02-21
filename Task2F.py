@@ -1,4 +1,3 @@
-from floodsystem.analysis import polyfit
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.flood import stations_highest_rel_level
 from floodsystem.stationdata import build_station_list
@@ -21,10 +20,9 @@ def run():
         ind = s_index[0]
         dates, levels = fetch_measure_levels(stations[ind].measure_id, dt=datetime.timedelta(days=dt))
         if len(dates) == 0 or len(levels) == 0:
-            print(f'Dates and/or levels for {stations[ind].name} not returned properly from fetch_measure_levels (empty list returned)')
+            print(f'Dates and/or levels for {stations[ind].name} returned empty from fetch_measure_levels')
         else:
             plot_water_level_with_fit(stations[ind], dates, levels, p)
 
 
 run() 
-
