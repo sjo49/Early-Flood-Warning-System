@@ -11,7 +11,7 @@ def test_floodwarning():
         for i in range(len(stations)):
             if stations[i].town == town:
                 station = stations[i]
-        assert staton.relative_water_level() > 8
+        assert station.relative_water_level() > 8
     for town in risks[1]:
         for i in range(len(stations)):
             if stations[i].town == town:
