@@ -23,7 +23,7 @@ def run():
                 levels_array = False
         if len(dates) == 0 or len(levels) == 0:
             print(f'Dates and/or levels for {stations[ind].name} returned empty from fetch_measure_levels')
-        elif levels_array == False:
+        elif levels_array is False:
             print(f'Levels for {stations[ind].name} not returning correct array')
         else:
             plot_water_levels(stations[ind].name, dates, levels)
