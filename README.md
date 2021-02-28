@@ -15,7 +15,7 @@ High risk:
 Towns on the high risk list must have a station measuring a relative water level greater than five, and have an arbitrary slope increase higher than -0.5. If there is a significant amount of rainfall, this could become a severe risk town.
 
 Moderate risk:
-Towns with stations measuring a relative water level greater than 5, or greater than 2 with an increasing slope, are returned on the moderate risk list. THese towns aren't in any immediate danger, but this could change with consistently bad weather.
+Towns with stations measuring a relative water level greater than 5, or greater than 2 with an increasing slope, are returned on the moderate risk list. These towns aren't in any immediate danger, but this could change with consistently bad weather.
 
 Low risk:
 The low risk towns have stations measuring a relative water level greater than or equal to 2. There is no apparent danger, however having a relative water level equal to double to typical highest level could eventually lead to problems.
