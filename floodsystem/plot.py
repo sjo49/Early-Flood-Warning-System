@@ -1,10 +1,6 @@
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
-from datetime import datetime, timedelta
-from . import datafetcher
-from .station import MonitoringStation
-from .stationdata import build_station_list
 
 
 def plot_water_levels(station, dates, levels):
@@ -27,7 +23,8 @@ def plot_water_levels(station, dates, levels):
 
 
 def plot_water_level_with_fit(station, dates, levels, p):
-    date_floats = matplotlib.dates.date2num(dates) # dates between which the levels will be computed to fit to a polynomial
+    # dates between which the levels will be computed to fit to a polynomial
+    date_floats = matplotlib.dates.date2num(dates)
     x = date_floats
     y = levels
     p_coeff = np.polyfit(x-x[0], y, p)
@@ -37,7 +34,8 @@ def plot_water_level_with_fit(station, dates, levels, p):
     typical_low, = plt.plot(x1, np.full(30, station.typical_range[0]), 'g')
     typical_high, = plt.plot(x1, np.full(30, station.typical_range[1]), 'r')
     poly_plot, = plt.plot(x1, poly(x1-x[0]), 'bo')
-    plt.legend([typical_low, typical_high, poly_plot], ['typical low level', 'typical high level', 'best-fit polynomial'])
+    plt.legend([typical_low, typical_high, poly_plot],
+               ['typical low level', 'typical high level', 'best-fit polynomial'])
     plt.xlabel('dates')
     plt.ylabel('polynomial fit')
     plt.xticks(rotation=45)
@@ -45,4 +43,3 @@ def plot_water_level_with_fit(station, dates, levels, p):
     plt.tight_layout()
 
     return plt.show()
-
