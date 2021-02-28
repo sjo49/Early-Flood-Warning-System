@@ -37,7 +37,6 @@ def plot_water_level_with_fit(station, dates, levels, p):
     typical_low, = plt.plot(x1, np.full(30, station.typical_range[0]), 'g')
     typical_high, = plt.plot(x1, np.full(30, station.typical_range[1]), 'r')
     poly_plot, = plt.plot(x1, poly(x1-x[0]), 'bo')
-    # plt.plot(x1, poly(x1-x[0]), 'bo', x1, typical_low, 'g--', x1, typical_high, 'r--')
     plt.legend([typical_low, typical_high, poly_plot], ['typical low level', 'typical high level', 'best-fit polynomial'])
     plt.xlabel('dates')
     plt.ylabel('polynomial fit')

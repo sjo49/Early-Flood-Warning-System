@@ -17,7 +17,16 @@ def run():
         s_index = [x for x, y in enumerate(stations) if y.name == station_name]
         ind = s_index[0]
         dates, levels = fetch_measure_levels(stations[ind].measure_id, dt=datetime.timedelta(days=dt))
-        plot_water_levels(stations[ind].name, dates, levels)
+        levels_array = True
+        for i in range(len(levels)):
+            if type(levels[i]) != float:
+                levels_array = False
+        if len(dates) == 0 or len(levels) == 0:
+            print(f'Dates and/or levels for {stations[ind].name} returned empty from fetch_measure_levels')
+        elif levels_array == False:
+            print(f'Levels for {stations[ind].name} not returning correct array')
+        else:
+            plot_water_levels(stations[ind].name, dates, levels)
 
 
 run()
