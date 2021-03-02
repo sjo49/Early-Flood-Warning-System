@@ -5,7 +5,6 @@
 geographical data.
 
 """
-import dateutil
 from .utils import sorted_by_key  # noqa
 import subprocess
 
@@ -24,8 +23,8 @@ def distance(object, p):
 
 def stations_by_distance(stations, p):
     tuple_list = []
-    for station in stations:
-        tuple_list.append((station.name, distance(station.coord, p)))
+    for i in range(len(stations)):
+        tuple_list.append((stations[i].name, distance(stations[i].coord, p)))
     return sorted_by_key(tuple_list, 1)
 
 

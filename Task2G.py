@@ -19,6 +19,10 @@ def run():
         print('No moderate risk towns.')
     else:
         print(f'Moderate risk towns:{risk_lists[2]}')
+    if len(risk_lists[3]) == 0:
+        print('No low risk towns.')
+    else:
+        print(f'Low risk towns:{risk_lists[3]}')
 
 
 run()
